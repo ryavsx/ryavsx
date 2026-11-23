@@ -50,6 +50,20 @@ td:last-child{color:var(--red);font-weight:800}
 .card{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--red);border-radius:14px;padding:18px}
 .card h3{font-size:17px;margin-bottom:6px}
 .card p{color:var(--mut);font-size:14px}
+.players{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px}
+.pc{perspective:900px;height:240px;cursor:pointer;background:none;border:0;padding:0;color:inherit;font:inherit;text-align:center}
+.pc-in{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.pc.flip .pc-in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border:1px solid var(--line);border-top:4px solid var(--red);border-radius:16px;background:var(--card);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:14px}
+.face.back{transform:rotateY(180deg);background:#220a06;justify-content:center;gap:8px}
+.avatar{position:relative;width:92px;height:92px;border-radius:50%;overflow:hidden;background:var(--red);display:grid;place-items:center;font:900 30px/1 Impact,"Arial Black",sans-serif}
+.avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.pn{font-weight:700;font-size:15px;line-height:1.2}
+.sc b{display:block;font:900 34px/1 Impact,"Arial Black",sans-serif;color:var(--red)}
+.sc span{color:var(--mut);font-size:12px}
+.hint{color:var(--mut);font-size:11px}
+.ln{width:100%;display:flex;justify-content:space-between;gap:8px;font-size:12px;text-align:left;border-bottom:1px solid var(--line);padding-bottom:4px}
+.ln b{white-space:nowrap}
 footer{margin-top:56px;background:var(--red);padding:26px 0 calc(26px + env(safe-area-inset-bottom,0px));text-align:center;font-weight:800}
 </style>
 </head>
@@ -59,7 +73,7 @@ footer{margin-top:56px;background:var(--red);padding:26px 0 calc(26px + env(safe
   <div class="wrap">
     <div class="shield" aria-hidden="true"></div>
     <a class="brand" href="#top">ryckzadasBR</a>
-    <nav><a href="#painel">Painel</a><a href="#projetos">Projetos</a></nav>
+    <nav><a href="#painel">Painel</a><a href="#jogadores">Jogadores</a><a href="#projetos">Projetos</a></nav>
   </div>
 </header>
 
@@ -97,6 +111,14 @@ footer{margin-top:56px;background:var(--red);padding:26px 0 calc(26px + env(safe
       <thead><tr><th>#</th><th>Jogador</th><th>Gols</th><th>Assist.</th><th>G+A</th></tr></thead>
       <tbody id="rows"></tbody>
     </table></div>
+  </div>
+</section>
+
+<section id="jogadores">
+  <div class="wrap">
+    <h2>Jogadores</h2>
+    <p class="sub">Toque no card para virar e ver os números por competição.</p>
+    <div class="players" id="players"></div>
   </div>
 </section>
 
@@ -159,7 +181,40 @@ function renderScorers(){
   draw();
 }
 
-function renderAll(){ renderMatch(); renderTitles(); renderScorers(); }
+function slug(n){return n.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");}
+
+function renderPlayers(){
+  const m = {};
+  DATA.artilheiros.forEach(a => {
+    const p = m[a.jogador] = m[a.jogador] || {nome:a.jogador, g:0, a:0, c:[], foto:""};
+    p.g += a.gols; p.a += a.assistencias; p.c.push(a);
+    if (a.foto) p.foto = a.foto;
+  });
+  const list = Object.values(m).sort((x, y) => (y.g + y.a) - (x.g + x.a) || y.g - x.g);
+  $("players").innerHTML = list.map(p => {
+    const ini = p.nome.split(" ").filter(Boolean).slice(0, 2).map(w => w[0]).join("").toUpperCase();
+    const foto = p.foto || (slug(p.nome) + ".jpg");
+    const linhas = p.c.map(a => `<div class="ln"><span>${esc(a.competicao)}</span><b>${a.gols}⚽ ${a.assistencias}🅰️</b></div>`).join("");
+    return `<button class="pc" aria-label="${esc(p.nome)}: ${p.g + p.a} participações em gols">
+      <div class="pc-in">
+        <div class="face">
+          <div class="avatar"><span>${esc(ini)}</span><img src="${esc(foto)}" alt="" onerror="this.remove()"></div>
+          <div class="pn">${esc(p.nome)}</div>
+          <div class="sc"><b>${p.g + p.a}</b><span>G+A</span></div>
+          <div class="hint">toque para virar</div>
+        </div>
+        <div class="face back">
+          <div class="pn">${esc(p.nome)}</div>
+          <div class="sc"><b>${p.g}⚽ ${p.a}🅰️</b><span>total na temporada</span></div>
+          ${linhas}
+        </div>
+      </div>
+    </button>`;
+  }).join("");
+}
+$("players").onclick = e => { const b = e.target.closest(".pc"); if (b) b.classList.toggle("flip"); };
+
+function renderAll(){ renderMatch(); renderTitles(); renderScorers(); renderPlayers(); }
 
 renderAll();
 fetch("data/flamengo.json").then(r => r.ok ? r.json() : Promise.reject()).then(j => { DATA = j; renderAll(); }).catch(() => {});
