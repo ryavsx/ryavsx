@@ -7,7 +7,7 @@
 ### 🔴⚫ Dev de código e de coração Mengão ⚫🔴
 
 ![Flamengo](https://img.shields.io/badge/Mengão-C52613?style=for-the-badge&logo=github&logoColor=white&labelColor=000000)
-![Seguidores](https://img.shields.io/github/followers/ryckzadasBR?style=for-the-badge&color=C52613&labelColor=000000)
+![Seguidores](https://img.shields.io/github/followers/ryavsx?style=for-the-badge&color=C52613&labelColor=000000)
 
 </div>
 
@@ -91,11 +91,11 @@ _Tabela do Brasileirão indisponível no momento._
 
 <div align="center">
 
-![Stats](https://github-readme-stats.vercel.app/api?username=ryckzadasBR&show_icons=true&bg_color=000000&title_color=C52613&icon_color=C52613&text_color=ffffff&border_color=C52613)
+![Stats](https://github-readme-stats.vercel.app/api?username=ryavsx&show_icons=true&bg_color=000000&title_color=C52613&icon_color=C52613&text_color=ffffff&border_color=C52613)
 
-![Linguagens](https://github-readme-stats.vercel.app/api/top-langs/?username=ryckzadasBR&layout=compact&bg_color=000000&title_color=C52613&text_color=ffffff&border_color=C52613)
+![Linguagens](https://github-readme-stats.vercel.app/api/top-langs/?username=ryavsx&layout=compact&bg_color=000000&title_color=C52613&text_color=ffffff&border_color=C52613)
 
-![Streak](https://streak-stats.demolab.com?user=ryckzadasBR&background=000000&ring=C52613&fire=C52613&currStreakLabel=C52613&sideLabels=ffffff&currStreakNum=ffffff&sideNums=ffffff&dates=ffffff&border=C52613)
+![Streak](https://streak-stats.demolab.com?user=ryavsx&background=000000&ring=C52613&fire=C52613&currStreakLabel=C52613&sideLabels=ffffff&currStreakNum=ffffff&sideNums=ffffff&dates=ffffff&border=C52613)
 
 </div>
 
