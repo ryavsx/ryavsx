@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![header](https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,2,2,5&height=200&section=header&text=Fala,%20eu%20sou%20o%20ryckzadasBR!&fontSize=40&fontColor=ffffff)
+![header](https://capsule-render.vercel.app/api?type=waving&color=C52613&height=200&section=header&text=Fala,%20eu%20sou%20o%20ryckzadasBR!&fontSize=40&fontColor=ffffff)
 
 ### 🔴⚫ Dev de código e de coração Mengão ⚫🔴
 
@@ -16,10 +16,6 @@
 ## 🔴⚫ Painel do Mengão
 
 <!-- FLA:START -->
-
-### 📋 Brasileirão
-
-_Tabela do Brasileirão indisponível no momento._
 
 ### 🏆 Títulos
 
@@ -69,7 +65,7 @@ _Tabela do Brasileirão indisponível no momento._
 | 2 | Léo Pereira | 1 | 0 | 1 |
 | 3 | Bruno Henrique | 0 | 1 | 1 |
 
-<sub>Atualizado em 23/11/2026 00:44 (Brasília)</sub>
+<sub>Atualizado em 23/11/2026 01:08 (Brasília)</sub>
 
 <!-- FLA:END -->
 
@@ -101,7 +97,7 @@ _Tabela do Brasileirão indisponível no momento._
 
 <div align="center">
 
-![footer](https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,2,2,5&height=100&section=footer)
+![footer](https://capsule-render.vercel.app/api?type=waving&color=C52613&height=100&section=footer)
 
 **Ao Mengão, tudo. 🔴⚫**
 
